@@ -14,9 +14,7 @@ def bulkProcess(jsonFile=""):
         ];
 
     for song in songs:
-
         try:
-
             if "pitch" not in song.keys():
                 song |= {"pitch":0};
 
@@ -47,7 +45,7 @@ def main():
         print("usage:");
         print("python run.py [path to the audio file] [keyword of the rvc model] [pitch]");
 
-    if len(sys.argv) >=3 and len(sys.argv)<5 :
+    if len(sys.argv) >=3 and len(sys.argv)<5 and sys.argv[1] != "--bulk":
 
         data=getConfigFile(os.path.join("utils","config.json"));
 
