@@ -277,7 +277,7 @@ class RVCRemix:
         self.log("resampling "+ file)
         audioFormat=file[file.index("."):]
         filedResampled = file[:file.index(".")]+"_"+str(sampleFreq) +audioFormat;
-        os.system("ffmpeg -hide_banner -loglevel error -y -i " + file +" -ar "+ str(sampleFreq) +" -ac 2 "+ filedResampled);
+        os.system("ffmpeg -hide_banner -loglevel error -y -i " + '"' +file + '"' +" -ar "+ str(sampleFreq) +" -ac 2 "+ '"' +filedResampled + '"');
         os.remove(file);
         shutil.copyfile(filedResampled,file);
         os.remove(filedResampled);
