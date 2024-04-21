@@ -32,12 +32,17 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 
  - run `python -m venv venv`
  <details><summary> linux </summary>
+
  - then `source venv/bin/activate`
+
  </details>
 
  <details><summary> windows </summary>
+
  - if python has not yet the permission to run scripts, run in an **admin** powershell window : `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+ 
  - then `.\venv\Scripts\Activate.ps1` (if you're using powershell) or `venv\Scripts\activate` (if you're using cmd)
+
  </details>
 
  </details>

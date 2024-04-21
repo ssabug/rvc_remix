@@ -3,6 +3,7 @@
         "modelsPath" : "/home/cala/dev/RVC-GUI/models",
         "workingDir" : "/home/cala/dev/rvcRemix/output/",
         "keepTempFiles" : false,
+        "copySeparatedFiles" : true,
         "mode" : "cpu"      
     }
 }
