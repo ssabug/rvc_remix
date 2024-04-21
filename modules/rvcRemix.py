@@ -34,7 +34,8 @@ class RVCRemix:
                 mode="cpu",
                 pitch=0,
                 workingDir="",
-                keepTempFiles=False):
+                keepTempFiles=False,
+                copySeparatedFiles=False):
 
         self.file=file;
         self.url=url;
@@ -45,6 +46,7 @@ class RVCRemix:
         self.mode=mode;#cpu or cuda
         self.pitch=pitch;
         self.keepTempFiles=keepTempFiles;
+        self.copySeparatedFiles=copySeparatedFiles;
 
         self.workingDir=self.initWorkingDirectory(workingDir);
 
@@ -54,10 +56,15 @@ class RVCRemix:
         log(str(text),"RVCRemix")
 
     def run(self):
-        
 
+        if self.file !="":
+                            originalFile=Path(self.file);
+                        else:
+                            originalFile=Path(inputAudioFile);
+        
         inputAudioFile = self.getAudioFile();
-        outputFile=os.path.join(self.workingDir,Path(inputAudioFile).stem + "_final.wav")
+        outputFile=str(os.path.join(self.workingDir,Path(inputAudioFile).stem + "_final.wav"));
+        copyPath=str(os.path.join(str(originalFile.parents[0]),str(originalFile.stem)+"_"+self.rvcModel+"_remix.wav"));
 
         self.log("Starting rvc remix creation ...");
         self.log(" audio file : " + inputAudioFile);
@@ -69,9 +76,14 @@ class RVCRemix:
 
             instrumental,acapella=self.separateAudio(inputAudioFile);
 
-            if instrumental == None:
-                self.log("No input instrumental file");
+            if ( instrumental == None or acapella == None ) or ( instrumental == None and acapella == None ):
+                self.log("Missing instrumental and/or acapella file");
             else:
+
+                if self.copySeparatedFiles :
+                    shutil.copy(instrumental,copyPath.replace("_remix.wav","_instru.wav"));
+                    shutil.copy(acapella,copyPath.replace("_remix.wav","_vocal.wav"));
+
                 rvcModel=self.getRVCModel(self.rvcModel);
 
                 if rvcModel == None:
@@ -90,12 +102,6 @@ class RVCRemix:
 
                         finalFile= self.mix(instrumental,rvcAudioFile,outputFile);
 
-                        if self.file !="":
-                            originalFile=Path(self.file);
-                        else:
-                            originalFile=Path(inputAudioFile);
-
-                        copyPath=os.path.join(str(originalFile.parents[0]),str(originalFile.stem)+"_"+self.rvcModel+"_remix.wav");
                         self.log("coying finalfile to " + copyPath)
                         shutil.copy(finalFile,copyPath);
 

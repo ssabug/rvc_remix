@@ -44,6 +44,9 @@ def bulkProcess():
 
 def getConfigFile(path):
     data=None;
+    if not os.path.exists(os.path.join("utils","config.json")):
+        shutil.copy(os.path.join("utils","default_config.json"),os.path.join("utils","config.json"))
+
     #try:
     data=json.load(open(path));
 
@@ -70,6 +73,7 @@ def main():
             mode=config["mode"] # or cuda;
             workingDir=config["workingDir"];
             keepTempFiles=config["keepTempFiles"];
+            copySeparatedFiles=config["copySeparatedFiles"];
 
             file=sys.argv[1];
             modelTag=sys.argv[2];
@@ -78,7 +82,7 @@ def main():
             if len(sys.argv)==4:
                 pitch=float(sys.argv[3]);
 
-            r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=Path(file).stem,file=file,model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles);
+            r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=Path(file).stem,file=file,model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles,copySeparatedFiles=copySeparatedFiles);
     else:
         print(len(sys.argv))
         usage();

@@ -1,4 +1,6 @@
 output/
+venv/
 modules/__pycache__
 utils/git_update.sh
-venv/
+utils/config.json
+

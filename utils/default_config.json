@@ -1,0 +1,9 @@
+{
+    "config" : {
+        "modelsPath" : "",
+        "workingDir" : "",
+        "keepTempFiles" : false,
+        "copySeparatedFiles" : true,
+        "mode" : "cpu"      
+    }
+}
