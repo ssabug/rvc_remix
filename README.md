@@ -49,7 +49,7 @@ Some useful ressources:
 
  - [RVC python lib](https://pypi.org/project/rvc-python/)
  - [Audio separator lib](https://pypi.org/project/audio-separator/)
- - [FFMPEG] (https://ffmpeg.org/)
+ - [FFMPEG](https://ffmpeg.org/)
  
 ## Compatibility
 Linux, Mac, Windows (as in python)

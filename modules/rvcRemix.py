@@ -21,6 +21,7 @@ from rvc_python.infer import infer_file
 
 #pitchsifter
 import librosa
+import soundfile
 
 class RVCRemix:
 
@@ -293,8 +294,10 @@ class RVCRemix:
             
         # Applying +6 semitone pitch shift
         y_pitched = librosa.effects.pitch_shift(y=y, sr=sr, n_steps=pitch*2)
+
         # Save the modified audio to a new file
-        librosa.output.write_wav(pitchshiftedFile, y_pitched, sr)
+        #librosa.output.write_wav(pitchshiftedFile, y_pitched, sr)
+        soundfile.write(pitchshiftedFile,y_pitched,sr);
 
         os.remove(file);
         shutil.copyfile(pitchshiftedFile,file);
