@@ -77,7 +77,7 @@ class RVCRemix:
             self.log("No input audio file");
         else:
 
-            if os.path.exists(os.path.join(originalFileFullNoExt,"_vocal.wav")) and os.path.exists(originalFileFullNoExt,"_instru.wav"):
+            if os.path.exists(os.path.join(originalFileFullNoExt,"_vocal.wav")) and os.path.exists(os.path.join(originalFileFullNoExt,"_instru.wav")):
                 
                 self.log("Separated files already exist, skipping");
                 acapella=os.path.join(originalFileFullNoExt,"_vocal.wav");
