@@ -60,7 +60,7 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 ## Running
 
  - (optional) if you created a virtual environnement,
- 
+
  <details><summary> linux </summary>
 
  - run command `source venv/bin/activate`
@@ -73,7 +73,7 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 
  </details>
 
- - then, still in a command window, `python run.py "[path to the audio file]" [keyword of the rvc model] [pitch (optional)]` 
+ - then, still in the command window, `python run.py "path to the audio file" keyword_of_the_rvc_model pitch(optional)` 
 
 ## Utilities
 
