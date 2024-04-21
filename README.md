@@ -59,6 +59,7 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
  - `"workingDir" : "a path to a folder"` 2nd part with the path to the folder where the temporary files will be put
  - `"mode" : "cpu"` 2nd part with the mode to use, "cpu" or  "cuda"
  - `"keepTempFiles" : false` 2nd part with wether or not to keep intermediate  temp files
+ - `"copySeparatedFiles" : true` wether or not to copy separated file in the same directory as input; if existing, separation will not be done
 
 ## Running
 
