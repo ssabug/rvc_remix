@@ -81,11 +81,17 @@ def main():
             modelTag=sys.argv[2];
             pitch=0;
 
-            if len(sys.argv)==4:
-                pitch=int(sys.argv[3]);
+            if not os.path.exists(file):
 
-            r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=Path(file).stem,file=file,model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles,copySeparatedFiles=copySeparatedFiles);
-    
+                print("file does not exist : " + file);
+
+            else:
+
+                if len(sys.argv)==4:
+                    pitch=int(sys.argv[3]);
+
+                r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=Path(file).stem,file=file,model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles,copySeparatedFiles=copySeparatedFiles);
+        
     elif sys.argv[1] == "--bulk":
         print("Bulk mode with json file selected");
         if len(sys.argv) == 3:
