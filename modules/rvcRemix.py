@@ -292,8 +292,7 @@ class RVCRemix:
         y, sr = librosa.core.load(file);
             
         # Applying +6 semitone pitch shift
-        y_pitched = librosa.effects.pitch_shift(y, sr=sr, n_steps=pitch*2)
-        librosa.effects.pitch_shift()
+        y_pitched = librosa.effects.pitch_shift(y=y, sr=sr, n_steps=pitch*2)
         # Save the modified audio to a new file
         librosa.output.write_wav(pitchshiftedFile, y_pitched, sr)
 
