@@ -40,7 +40,7 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
  <details><summary> windows </summary>
 
  - if python has not yet the permission to run scripts, run in an **admin** powershell window : `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
- 
+
  - then `.\venv\Scripts\Activate.ps1` (if you're using powershell) or `venv\Scripts\activate` (if you're using cmd)
 
  </details>
@@ -59,7 +59,20 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 
 ## Running
 
- - (optional) if you created a virtual environnement, run command `source venv/bin/activate` on linux or `venv\Scripts\activate` on windows (some IDEs can do this automatically)
+ - (optional) if you created a virtual environnement,
+ 
+ <details><summary> linux </summary>
+
+ - run command `source venv/bin/activate`
+
+ </details>
+
+ <details><summary> windows </summary>
+
+ - run command `.\venv\Scripts\Activate.ps1` in a powershell
+
+ </details>
+
  - then, still in a command window, `python run.py "[path to the audio file]" [keyword of the rvc model] [pitch (optional)]` 
 
 ## Utilities
