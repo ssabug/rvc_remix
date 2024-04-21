@@ -3,7 +3,7 @@
 ## Description
 
 This program takes any audio/video file (preferably with vocals and instruments), separates vocal and instrumental tracks, applies a RVC model to vocals and re-mix them with the instrumental.
-You'll need just at least one RVC model ( find some [here](https://voice-models.com/) ) store them in a folder, find an input file and you're OK!
+You'll need just at least one RVC model ( find some [here](https://voice-models.com/) and extract zip file ) store them in a folder, find an input file and you're OK!
 
 ## Features
 
@@ -12,11 +12,15 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
  - [ ] Pitch shift the instrumental if the rvc voice has pitch shift too
  - [ ] Automatically find original pitch and fit the rvc model pitch ( if possible )
  - [ ] Edit audio separator models
+ - [ ] Convert output file to same format as input (if audio, else use mp3)
 
 ## Requirements
- - python 3
+ - python 3.10
  - pip
- - ffmpeg
+ - ffmpeg (dont forget on Windows to add the evironment variable )
+ - git
+
+**Note: On Windows, install preferably these dependencies with Microsoft store**
 
 ## Installation
  - `git clone` the repo
@@ -25,10 +29,18 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
   <summary> (optional) you can create a python virtual environnement to avoid the project python libraries to interfere with the ones already present on your system </summary>
 
  - run `python -m venv venv`
- - then `source venv/bin/activate` (some IDEs can do this automatically) 
+ <details><summary> linux </summary>
+ - then `source venv/bin/activate`
+ </details>
+
+ <details><summary> windows </summary>
+ - if python has not yet the permission to run scripts, run in an **admin** powershell window : `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+ - then `.\venv\Scripts\Activate.ps1` (if you're using powershell) or `venv\Scripts\activate` (if you're using cmd)
+ </details>
+
  </details>
  
- - `pip install -r install/requirements.txt`
+ - `pip install -r utils/requirements.txt`
  
 ## Configure
 
