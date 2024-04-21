@@ -20,7 +20,6 @@ from audio_separator.separator import Separator
 from rvc_python.infer import infer_file
 
 #pitchsifter
-from stftpitchshift import StftPitchShift
 import librosa
 
 class RVCRemix:
