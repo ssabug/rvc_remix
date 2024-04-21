@@ -15,12 +15,14 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
  - [ ] Convert output file to same format as input (if audio, else use mp3)
 
 ## Requirements
+
+**Note: On Windows, install preferably these dependencies with Microsoft store**
+
  - python 3.10
  - pip
  - ffmpeg (dont forget on Windows to add the evironment variable )
  - git
-
-**Note: On Windows, install preferably these dependencies with Microsoft store**
+ - **Windows only** C++ 14 Destktop development tools [here](https://visualstudio.microsoft.com/fr/visual-cpp-build-tools/)
 
 ## Installation
  - `git clone` the repo
