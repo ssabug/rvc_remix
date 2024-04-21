@@ -2,7 +2,7 @@
 
 ## Description
 
-This program takes any audio/video file (preferably with vocals and instruments), separates vocal and instrumental tracks, applies a RVC model to vocals and re-mix them with the instrumental.
+This program takes any audio/video file, extract audio, separates vocal and instrumental tracks, applies a RVC model to vocals and re-mix them with the instrumental.
 You'll need just at least one RVC model ( find some [here](https://voice-models.com/) and extract zip file ) store them in a folder, find an input file and you're OK!
 
 ## Features
