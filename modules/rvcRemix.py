@@ -63,6 +63,8 @@ class RVCRemix:
             originalFile=Path(self.file);
         else:
             originalFile=Path(inputAudioFile);
+
+        originalFileFullNoExt=str(originalFile.parents[0]) + str(originalFile.stem);
         
         outputFile=str(os.path.join(self.workingDir,Path(inputAudioFile).stem + "_final.wav"));
         copyPath=str(os.path.join(str(originalFile.parents[0]),str(originalFile.stem)+"_"+self.rvcModel+"_remix.wav"));
@@ -75,7 +77,17 @@ class RVCRemix:
             self.log("No input audio file");
         else:
 
-            instrumental,acapella=self.separateAudio(inputAudioFile);
+            if os.path.exists(os.path.join(originalFileFullNoExt,"_vocal.wav")) and os.path.exists(originalFileFullNoExt,"_instru.wav"):
+                
+                self.log("Separated files already exist, skipping");
+                acapella=os.path.join(originalFileFullNoExt,"_vocal.wav");
+                instrumental=os.path.join(originalFileFullNoExt,"_instru.wav");
+
+            else:
+
+                self.log("Separated files do NOT already exist, separating ...");
+
+                instrumental,acapella=self.separateAudio(inputAudioFile);
 
             if ( instrumental == None or acapella == None ) or ( instrumental == None and acapella == None ):
                 self.log("Missing instrumental and/or acapella file");

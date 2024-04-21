@@ -2,15 +2,18 @@
 
 ## Description
 
-This program takes any audio/video file, extract audio, separates vocal and instrumental tracks, applies a RVC model to vocals and re-mix them with the instrumental.
+This program takes any audio/video file, extracts audio, separates vocal and instrumental tracks, applies a RVC model to vocals and re-mix them with the instrumental.
 You'll need just at least one RVC model ( find some [here](https://voice-models.com/) and extract zip file ) store them in a folder, find an input file and you're OK!
 
 ## Features
 
  - [x] Generate from video/audio file (any format)
  - [ ] Generate from youtube link
- - [ ] Pitch shift the instrumental if the rvc voice has pitch shift too
+ - [x] Pitch shift the instrumental if the rvc voice has pitch shift too 
+ - [ ] Fix pitch unconsistencies between vocal & instru when pitcshifting
+ - [x] Do not run separation if output files already exist.
  - [ ] Automatically find original pitch and fit the rvc model pitch ( if possible )
+ - [x] Config file option to get instrumental and vocal audio file in same dir as original file
  - [ ] Edit audio separator models
  - [ ] Convert output file to same format as input (if audio, else use mp3)
 
