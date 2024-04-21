@@ -10,18 +10,37 @@ def bulkProcess(jsonFile=""):
         songs=jsonData['songs'];
     else:
         songs=[
-            { "name" : "pochonbleu", "file" : "/home/cala/Downloads/rvcremix/pochonbleu.mp4", "modelTag" : "booba", "pitch" : 0 }
+            { "name" : "remix1", "file" : "path to original file.mp4", "modelTag" : "booba", "pitch" : 0 }
         ];
 
     for song in songs:
         try:
+            data=getConfigFile(os.path.join("utils","config.json"));
+
+            if data != None:
+
+                config=data["config"];
+                modelsPath=config["modelsPath"];
+                mode=config["mode"] # or cuda;
+                workingDir=config["workingDir"];
+                keepTempFiles=config["keepTempFiles"];
+                copySeparatedFiles=config["copySeparatedFiles"];
+                              
+                modelTag=song["modelTag"];
+
+                #r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=Path(file).stem,file=file,model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles,copySeparatedFiles=copySeparatedFiles);
+    
             if "pitch" not in song.keys():
                 song |= {"pitch":0};
 
+            pitch=song['pitch'];
+
             if "file" in song.keys():
-                r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=song["name"],file=song["file"],model=song["modelTag"],pitch=song["pitch"]);
+                name=Path(song["file"]).stem;
+                r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=name,file=song["file"],model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles,copySeparatedFiles=copySeparatedFiles);
+                #r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=name.stem,file=song["file"],model=song["modelTag"],pitch=song["pitch"]);
             elif "url" in song.keys():
-                r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=song["name"],url=song["url"],model=song["modelTag"],pitch=song["pitch"]);
+                r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=name,url=song["url"],model=modelTag,pitch=pitch);
         
         except:
             print("error for song " + song['name'])
@@ -70,7 +89,7 @@ def main():
     elif sys.argv[1] == "--bulk":
         print("Bulk mode with json file selected");
         if len(sys.argv) == 3:
-            jsonFile=open(os.path.join("utils","bulk_remix.json"));
+            jsonFile=sys.argv[2];
             if os.path.exists(jsonFile):
                 bulkProcess(jsonFile);
             else:
