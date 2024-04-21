@@ -3,28 +3,15 @@ import json
 from pathlib import Path
 from modules.rvcRemix import *
 
-def bulkProcess():
+def bulkProcess(jsonFile=""):
 
-    songs=[
-        { "name" : "pochonbleu", "file" : "/home/cala/Downloads/rvcremix/pochonbleu.mp4", "modelTag" : "booba", "pitch" : 0 }
-        
-        #{ "name" : "licence4", "file" : "/home/cala/Downloads/rvcremix/licence4.mp4", "modelTag" : "goldman", "pitch" : 0 }
-        #{ "name" : "simplebasique", "file" : "/home/cala/Downloads/simplebasique.mkv", "modelTag" : "macron", "pitch" : 0 },
-        #{ "name" : "dudule", "file" : "/home/cala/Downloads/dudule.mkv", "modelTag" : "patton", "pitch" : 0 },
-        #{ "name" : "auteuilneuilly", "file" : "/home/cala/Downloads/auteuilneuilly.mkv", "modelTag" : "vianney", "pitch" : 0 },
-        #{ "name" : "retienslanuit", "file" : "/home/cala/Downloads/retienslanuit.webm", "modelTag" : "brassens", "pitch" : -3 },
-        #{ "name" : "jevousemmerde", "file" : "/home/cala/Downloads/jevousemmerde.mkv", "modelTag" : "bud", "pitch" : 0 },
-        #{ "name" : "lafievre", "file" : "/home/cala/Downloads/lafievre.mkv", "modelTag" : "sarkozy", "pitch" : 0 },
-        #{ "name" : "pochespleines", "file" : "/home/cala/Downloads/pochespleines.mkv", "modelTag" : "claudefrancois", "pitch" : 0 } 
-        #{ "name" : "poinconneur", "file" : "Le Poinconneur des Lilas-N5onILE73a0.m4a", "modelTag" : "dalida", "pitch" : 0 }
-        #{ "name" : "lezizi", "file" : "/home/cala/Downloads/lezizi.mkv", "modelTag" : "dalida", "pitch" : 0 },
-        #{ "name" : "henrydes", "file" : "/home/cala/Downloads/henrydes.mkv", "modelTag" : "booba", "pitch" : 0 }
-        #{ "name" : "corsmalade", "url" : "https://www.youtube.com/watch?v=HHd1gBWjKmo", "modelTag" : "servietsky", "pitch" : +3 }
-        #{ "name" : "caroline", "file" : "/home/cala/Downloads/caroline.mkv", "modelTag" : "macron", "pitch" : 0 },
-        #{ "name" : "connemara", "file" : "/home/cala/Downloads/connemara.mp4", "modelTag" : "montmirail", "pitch" : 0 }
-        #{"name" : "cagoule", "file" : "/home/cala/Downloads/foustacagoule.mp4", "modelTag" : "booba", "pitch" : 0 },
-        #{"name" : "marchalombre" , "file"  :"/home/cala/Downloads/marchalombre.mkv","modelTag" : "bunny","pitch" : +2 },
-    ]
+    if jsonFile != "":
+        jsonData=json.load(open(jsonFile));
+        songs=jsonData['songs'];
+    else:
+        songs=[
+            { "name" : "pochonbleu", "file" : "/home/cala/Downloads/rvcremix/pochonbleu.mp4", "modelTag" : "booba", "pitch" : 0 }
+        ];
 
     for song in songs:
 
@@ -41,7 +28,6 @@ def bulkProcess():
         except:
             print("error for song " + song['name'])
 
-
 def getConfigFile(path):
     data=None;
     if not os.path.exists(os.path.join("utils","config.json")):
@@ -54,7 +40,6 @@ def getConfigFile(path):
     #    print("error while loading config file")
 
     return data
-
 
 def main():
 
@@ -83,8 +68,18 @@ def main():
                 pitch=int(sys.argv[3]);
 
             r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=Path(file).stem,file=file,model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles,copySeparatedFiles=copySeparatedFiles);
+    
+    elif sys.argv[1] == "--bulk":
+        print("Bulk mode with json file selected");
+        if len(sys.argv) == 3:
+            jsonFile=open(os.path.join("utils","bulk_remix.json"));
+            if os.path.exists(jsonFile):
+                bulkProcess(jsonFile);
+            else:
+                print("Json bulk remix file does not exist : " + jsonFile);
+
     else:
-        print(len(sys.argv))
+        print(len(sys.argv));
         usage();
 
 main();

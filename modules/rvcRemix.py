@@ -96,9 +96,9 @@ class RVCRemix:
                 self.log("Missing instrumental and/or acapella file");
             else:
 
-                if self.copySeparatedFiles :
-                    shutil.copy(instrumental,copyPath.replace("_remix.wav","_instru.wav"));
-                    shutil.copy(acapella,copyPath.replace("_remix.wav","_vocal.wav"));
+                if self.copySeparatedFiles and (instrumental != originalFileFullNoExt+"_instru.wav" and acapella != originalFileFullNoExt+"_vocal.wav" ):
+                    shutil.copy(instrumental,originalFileFullNoExt+"_instru.wav");
+                    shutil.copy(acapella,originalFileFullNoExt+"_vocal.wav");
 
                 rvcModel=self.getRVCModel(self.rvcModel);
 
@@ -312,7 +312,7 @@ class RVCRemix:
         os.system('ffmpeg-normalize -f ' + os.path.join(file) + ' -o ' + os.path.join(file))
 
     def audioPitchShift(self,file,pitch):
-        self.log("Running pitch shift to " + file + ", pitch : " + str(pitch));
+        self.log("Running pitch shift to " + file);
         pitchshiftedFile=os.path.join(self.workingDir,"pitchshifted.wav");
 
         y, sr = librosa.core.load(file);

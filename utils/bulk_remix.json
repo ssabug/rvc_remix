@@ -1,0 +1,6 @@
+{
+    "songs" : [
+        { "name" : "remix1", "file" : "path to track to remix 1.mp3",   "modelTag" : "dalida", "pitch" : 0 },
+        { "name" : "remix2", "file" : "path to track to remix 2.mkv",   "modelTag" : "booba", "pitch" : 0 }
+    ]
+}
