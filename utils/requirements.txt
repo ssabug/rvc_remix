@@ -1,0 +1,11 @@
+#warning the uvr libs have been installed by hand a install.py is in progress to automatize
+torch
+torchvision
+torchaudio
+onnxruntime-gpu
+audio-separator[gpu]
+# end warning
+youtube_dl
+mutagen
+rvc-python
+ffmpeg-normalize

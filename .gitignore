@@ -1,0 +1,4 @@
+output/
+modules/__pycache__
+utils/git_update.sh
+venv/
