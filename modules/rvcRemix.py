@@ -58,9 +58,9 @@ class RVCRemix:
     def run(self):
 
         if self.file !="":
-                            originalFile=Path(self.file);
-                        else:
-                            originalFile=Path(inputAudioFile);
+            originalFile=Path(self.file);
+        else:
+            originalFile=Path(inputAudioFile);
         
         inputAudioFile = self.getAudioFile();
         outputFile=str(os.path.join(self.workingDir,Path(inputAudioFile).stem + "_final.wav"));
