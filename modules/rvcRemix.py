@@ -228,6 +228,9 @@ class RVCRemix:
         try:
             out=os.path.join(self.workingDir,"final.wav")
 
+            self.log("Starting RVC inference, file : ");
+            self.log("model : " + rvcModel + ", pitch : " + str(self.pitch) );
+
             result = infer_file(
                 input_path=acapella,
                 model_path=rvcModel,
@@ -294,7 +297,7 @@ class RVCRemix:
         os.system('ffmpeg-normalize -f ' + os.path.join(file) + ' -o ' + os.path.join(file))
 
     def audioPitchShift(self,file,pitch):
-        self.log("Running pitch shift to " + file);
+        self.log("Running pitch shift to " + file + ", pitch : " + str(pitch));
         pitchshiftedFile=os.path.join(self.workingDir,"pitchshifted.wav");
 
         y, sr = librosa.core.load(file);

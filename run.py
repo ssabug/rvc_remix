@@ -80,7 +80,7 @@ def main():
             pitch=0;
 
             if len(sys.argv)==4:
-                pitch=float(sys.argv[3]);
+                pitch=int(sys.argv[3]);
 
             r=RVCRemix(modelsPath=modelsPath,mode=mode,workingDir=workingDir,name=Path(file).stem,file=file,model=modelTag,pitch=pitch,keepTempFiles=keepTempFiles,copySeparatedFiles=copySeparatedFiles);
     else:
