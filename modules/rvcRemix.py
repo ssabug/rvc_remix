@@ -100,7 +100,7 @@ class RVCRemix:
                         shutil.copy(finalFile,copyPath);
 
                         if not self.keepTempFiles and self.file != "":
-                            os.rmdir(self.workingDir);
+                            shutil.rmtree(self.workingDir);
         return None;
 
     def getAudioFile(self):
