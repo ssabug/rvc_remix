@@ -68,7 +68,7 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 
 
 
- <details><summary>  - linux </summary>
+ <details><summary> linux </summary>
 
  - run command `source venv/bin/activate`
 
