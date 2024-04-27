@@ -64,7 +64,9 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 
 ## Running
 
- - (optional) if you created a virtual environnement,
+ <details><summary> if you created a virtual environnement <summary>
+
+
 
  <details><summary> linux </summary>
 
@@ -78,6 +80,8 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 
  </details>
 
+ </details>
+ 
  - to process a single file, run command :
 
  `python run.py "path to the audio file" keyword_of_the_rvc_model pitch(optional)` 
