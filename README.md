@@ -77,9 +77,13 @@ You'll need just at least one RVC model ( find some [here](https://voice-models.
 
  </details>
 
- - to process a single file, run command `python run.py "path to the audio file" keyword_of_the_rvc_model pitch(optional)` 
+ - to process a single file, run command :
 
- - to process multiple files, run command `python run.py --bulk "path_to_your_bulk_file.json"` . File **utils/bulk_remix.json** provides an example.
+ `python run.py "path to the audio file" keyword_of_the_rvc_model pitch(optional)` 
+
+ - to process multiple files, run command :
+ 
+ `python run.py --bulk "path_to_your_bulk_file.json"` . File **utils/bulk_remix.json** provides an example.
 
 ## Utilities
 
